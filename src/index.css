@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer components {
+  h1 {
+    @apply text-3xl xl:text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-xl xl:text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-lg xl:text-xl font-bold;
+  }
+
+  h4 {
+    @apply text-base xl:text-lg;
+  }
+
+  h5 {
+    @apply text-sm xl:text-base font-medium;
+  }
+
+  h6 {
+    @apply text-xs xl:text-sm font-semibold;
+  }
+}
