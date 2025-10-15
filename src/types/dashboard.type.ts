@@ -43,9 +43,10 @@ export interface KPIData {
   };
 }
 
-export interface Location {
+export interface LocationType {
   name: string;
   value: number;
+  coords: [number, number];
 }
 
 export interface Revenue {
@@ -70,7 +71,7 @@ export interface ChartData {
   totalSales: TotalSalesItem[];
   revenue: Revenue;
   projections: Projections;
-  locations: Array<Location>;
+  locations: Array<LocationType>;
 }
 
 export interface NotificationType {
@@ -102,10 +103,12 @@ export interface DashboardState {
   contacts: Contact[];
 
   sidebarOpen: boolean;
+  rightSidebarOpen: boolean;
   theme: "light" | "dark";
   currentView: "dashboard" | "orders";
 
   toggleSidebar: () => void;
+  toggleRightSidebar: () => void;
   setTheme: (theme: "light" | "dark") => void;
   refreshData: () => Promise<void>;
   setCurrentView: (view: "dashboard" | "orders") => void;

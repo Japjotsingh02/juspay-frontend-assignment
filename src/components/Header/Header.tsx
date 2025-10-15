@@ -1,95 +1,126 @@
 import React, { useState } from "react";
 import { useDashboardStore } from "../../store/dashboardStore";
-import { Search, Star, Moon } from "lucide-react";
-import SidebarIcon from "../../assets/sidebar-icon.svg?react";
-import FavouritesIcon from "../../assets/favourites-icon.svg?react";
-import ThemeIcon from "../../assets/theme-icon.svg?react";
-import RefreshIcon from "../../assets/refresh-icon.svg?react";
-import NotificationIcon from "../../assets/notification-icon.svg?react";
+import { Moon } from "lucide-react";
+import SidebarIconLight from "../../assets/light/sidebar-icon.svg?react";
+import SidebarIconDark from "../../assets/dark/sidebar-icon.svg?react";
+import FavouritesIconLight from "../../assets/light/favourites-icon.svg?react";
+import FavouritesIconDark from "../../assets/dark/favourites-icon.svg?react";
+import ThemeIconLight from "../../assets/light/theme-icon.svg?react";
+import ThemeIconDark from "../../assets/dark/theme-icon.svg?react";
+import RefreshIconLight from "../../assets/light/refresh-icon.svg?react";
+import RefreshIconDark from "../../assets/dark/refresh-icon.svg?react";
+import NotificationIconLight from "../../assets/light/notification-icon.svg?react";
+import NotificationIconDark from "../../assets/dark/notification-icon.svg?react";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
+import { Search } from "lucide-react";
 
 interface HeaderProps {
   onMenuClick: () => void;
+  onRightMenuClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+interface IconButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  icon: React.ReactNode;
+  label: string;
+}
+
+interface SearchBarProps {
+  value: string;
+  onChange: (val: string) => void;
+}
+
+const IconButton: React.FC<IconButtonProps> = ({ icon, label, ...props }) => (
+  <button
+    {...props}
+    aria-label={label}
+    className={`p-1.5 rounded-lg transition-all duration-200 hover:bg-app-10 hover:scale-105 active:scale-95 ${props.className || ""}`}
+  >
+    {icon}
+  </button>
+);
+
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChange }) => (
+  <div className="relative">
+    <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-app-40 w-4 h-4" />
+    <input
+      type="text"
+      placeholder="Search"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className={`w-[160px] text-sm text-app bg-background-search px-7 py-1.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-background-app transition-all duration-200 placeholder:text-app-40`}
+    />
+    <div className="absolute text-xs right-3 top-1/2 -translate-y-1/2 text-app-40 bg-app-10 rounded px-1 py-[1px]">
+      ⌘/
+    </div>
+  </div>
+);
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick, onRightMenuClick }) => {
   const { theme, setTheme, refreshData } = useDashboardStore();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+
+  const SidebarIcon = theme === "light" ? SidebarIconLight : SidebarIconDark;
+  const FavouritesIcon = theme === "light" ? FavouritesIconLight : FavouritesIconDark;
+  const ThemeIcon = theme === "light" ? ThemeIconLight : ThemeIconDark;
+  const RefreshIcon = theme === "light" ? RefreshIconLight : RefreshIconDark;
+  const NotificationIcon = theme === "light" ? NotificationIconLight : NotificationIconDark;
 
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
+        {/* Left Section */}
         <div className="flex items-center space-x-2">
-          <button
+          <IconButton
+            icon={<SidebarIcon className="w-4 h-4" />}
+            label="Toggle sidebar"
             onClick={onMenuClick}
-            className="p-1.5 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
-            aria-label="Toggle sidebar"
-          >
-            <SidebarIcon className="w-4 h-4" />
-          </button>
-
-          <button
-            className="p-1.5 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
-            aria-label="Favourites"
-          >
-            <FavouritesIcon className="w-4 h-4 text-gray-600" />
-          </button>
-
+          />
+          <IconButton
+            icon={<FavouritesIcon className="w-4 h-4" />}
+            label="Favourites"
+          />
           <Breadcrumb />
         </div>
 
-        <div className="flex items-center gap-5">
-          <div className="relative">
-            <Search className="absolute left-1.5 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-[160px] text-sm bg-[#1C1C1C0D] px-7 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-            <div className="absolute text-sm right-3 top-1/2 transform -translate-y-1/2 text-xs text-gray-400 bg-gray-100 rounded">
-              ⌘/
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <button
-              className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
-              aria-label="Favourites"
-            >
-              <Star className="w-5 h-5 text-gray-600" />
-            </button>
+        {/* Right Section */}
+        <div className="flex items-center space-x-5">
+          <SearchBar value={searchQuery} onChange={setSearchQuery} />
 
-            <button
+          <div className="flex items-center space-x-2">
+            <IconButton
+              icon={
+                theme === "dark" ? (
+                  <Moon className="w-4 h-4" />
+                ) : (
+                  <ThemeIcon className="w-5 h-5" />
+                )
+              }
+              label="Toggle theme"
               onClick={toggleTheme}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Moon className="w-5 h-5 text-gray-600" />
-              ) : (
-                <ThemeIcon className="w-5 h-5 text-gray-600" />
-              )}
-            </button>
+            />
 
-            <button
+            <IconButton
+              icon={
+                <RefreshIcon className="w-4 h-4 transition-transform duration-500" />
+              }
+              label="Refresh data"
               onClick={refreshData}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 hover:rotate-180"
-              aria-label="Refresh data"
-            >
-              <RefreshIcon className="w-5 h-5 text-gray-600 transition-transform duration-500" />
-            </button>
+            />
 
-            <button className="p-2 hover:bg-gray-100 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 relative group">
-              <NotificationIcon className="w-5 h-5 text-gray-600" />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center animate-pulse group-hover:animate-none">
-                3
-              </span>
-            </button>
+            <IconButton
+              icon={<NotificationIcon className="w-4 h-4" />}
+              label="Notifications"
+              onClick={onRightMenuClick}
+            />
+
+            <IconButton
+              icon={<SidebarIcon className="w-4 h-4" />}
+              label="Toggle right sidebar"
+              onClick={onRightMenuClick}
+            />
           </div>
         </div>
       </div>

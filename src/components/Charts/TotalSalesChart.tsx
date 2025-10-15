@@ -17,6 +17,7 @@ const TotalSalesChart: React.FC<TotalSalesProps> = ({ salesData }) => {
       {
         name: "Sales",
         type: "pie",
+        // top: -50,
         radius: ["60%", "80%"],
         avoidLabelOverlap: true,
         itemStyle: {
@@ -39,11 +40,13 @@ const TotalSalesChart: React.FC<TotalSalesProps> = ({ salesData }) => {
     <BaseChart title="Total Sales">
       <ReactECharts
         option={option}
-        style={{ height: 220, width: "100%" }}
-        opts={{ renderer: "canvas" }}
+        style={{ height: 120, width: "100%" }}
+        opts={{ renderer: "svg" }}
+        notMerge={true}
+        lazyUpdate={true}
       />
 
-      <div className="text-xs text-gray-600 space-y-2 w-full">
+      <div className="text-xs text-app-40 space-y-2 w-full">
         {salesData.map((item) => (
           <div key={item.name} className="flex justify-between">
             <div className="flex items-center gap-2">

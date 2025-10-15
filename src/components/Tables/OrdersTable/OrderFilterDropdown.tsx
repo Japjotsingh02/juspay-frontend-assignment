@@ -12,9 +12,9 @@ const OrderFilterDropdown: React.FC<Props> = ({
   setFilterStatus,
   onClose,
 }) => (
-  <div className="absolute left-0 top-10 bg-white border border-gray-200 shadow-md rounded-md p-2 z-10 text-sm w-32">
+  <div className="absolute left-0 top-10 bg-background-app border border-app-20 shadow-md rounded-md p-2 z-10 text-sm w-32">
     <button
-      className={`block w-full text-left px-2 py-1 rounded ${!filterStatus ? "bg-gray-100" : "hover:bg-gray-50"}`}
+      className={`block w-full text-left text-app px-2 py-1 rounded ${!filterStatus ? "bg-app-10" : "hover:bg-app-10"}`}
       onClick={() => {
         setFilterStatus(null);
         onClose();
@@ -25,8 +25,8 @@ const OrderFilterDropdown: React.FC<Props> = ({
     {Object.keys(statusColor).map((status) => (
       <button
         key={status}
-        className={`block w-full text-left px-2 py-1 rounded ${
-          filterStatus === status ? "bg-gray-100" : "hover:bg-gray-50"
+        className={`block w-full text-left text-app px-2 py-1 rounded ${
+          filterStatus === status ? "bg-app-10" : "hover:bg-app-10"
         }`}
         onClick={() => {
           setFilterStatus(status);

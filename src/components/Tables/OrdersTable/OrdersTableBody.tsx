@@ -1,9 +1,10 @@
 import React from "react";
 import { Calendar, MoreHorizontal } from "lucide-react";
 import { statusColor } from "../../../constants/dashboard.d";
+import type { OrdersData } from "../../../types/dashboard.type";
 
 interface Props {
-  data: any[];
+  data: OrdersData[];
   selectedRows: Set<string>;
   toggleSelect: (id: string) => void;
   setSelectedRows: React.Dispatch<React.SetStateAction<Set<string>>>;
@@ -22,9 +23,9 @@ const OrdersTableBody: React.FC<Props> = ({
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-xs 2xl:text-sm text-gray-700">
+      <table className="w-full text-xs 2xl:text-sm text-app">
         <thead>
-          <tr className="border-b border-[#1c1c1c33] text-[#1c1c1c66] text-left">
+          <tr className="border-b border-app-20 text-app-40 text-left">
             <th className="py-2 px-3">
               <input
                 type="checkbox"
@@ -48,8 +49,8 @@ const OrdersTableBody: React.FC<Props> = ({
           {data.map((row) => (
             <tr
               key={row.id}
-              className={`border-b border-[#1c1c1c0d] hover:bg-gray-50 transition ${
-                selectedRows.has(row.id) ? "bg-gray-100" : ""
+              className={`border-b border-app-5 hover:bg-app-10 transition ${
+                selectedRows.has(row.id) ? "bg-app-10" : ""
               }`}
             >
               <td className="p-3">
@@ -62,24 +63,19 @@ const OrdersTableBody: React.FC<Props> = ({
               </td>
               <td className="p-3">{row.id}</td>
               <td className="p-3 flex items-center gap-2">
-                {/* <img
-                  src={row.user.avatar}
-                  alt={row.user.name}
-                  className="w-6 h-6 rounded-full"
-                /> */}
-                <row.user.avatar className="w-6 h-6" alt={row.user.name} />
+                <row.user.avatar className="w-6 h-6" aria-label={row.user.name} />
                 {row.user.name}
               </td>
               <td className="p-3">{row.project}</td>
               <td className="p-3">{row.address}</td>
-              <td className="p-3 flex items-center gap-2 text-gray-500">
+              <td className="p-3 flex items-center gap-2">
                 <Calendar className="w-4 h-4" /> {row.date}
               </td>
               <td className={`p-3 font-medium ${statusColor[row.status]}`}>
                 {row.status}
               </td>
               <td className="p-3 text-right">
-                <MoreHorizontal className="w-4 h-4 text-gray-400" />
+                <MoreHorizontal className="w-4 h-4" />
               </td>
             </tr>
           ))}

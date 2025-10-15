@@ -3,7 +3,43 @@
 @import "tailwindcss";
 
 @theme {
+  /* Background Colors - Light Theme */
   --font-inter: "Inter", sans-serif;
+  --color-app: #1c1c1c;
+  --color-app-40: #1c1c1c66;
+  --color-app-20: #1c1c1c33;
+  --color-app-10: #1c1c1c1a;
+  --color-app-5: #1c1c1c0d;
+  
+  --color-background-app: #ffffff;
+  --color-background-app-40: #ffffff66;
+  --color-background-card: #F7F9FB;
+  --color-background-search: #1c1c1c0d;
+  
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  /* Brand Colors - Dark Theme */
+  --color-app: #ffffff;
+  --color-app-40: #ffffff66;
+  --color-app-20: #ffffff33;
+  --color-app-10: #ffffff1a;
+  --color-app-5: #ffffff0d;
+  
+  --color-background-app: #1C1C1C;
+  --color-background-app-40: #1C1C1C66;
+  --color-background-card: #ffffff0d;
+  --color-background-search: #ffffff1a;
+  
+  /* Animation Colors - Dark Theme */
+  --color-shimmer: rgba(0, 0, 0, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.3);
 }
 
 @layer components {

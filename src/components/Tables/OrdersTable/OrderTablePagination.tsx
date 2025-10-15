@@ -10,7 +10,7 @@ interface Props {
 const OrdersTablePagination: React.FC<Props> = ({ page, totalPages, setPage }) => (
   <div className="flex justify-end items-center gap-2 mt-4">
     <button
-      className="p-1.5 rounded-md hover:bg-gray-100 disabled:opacity-40"
+      className="p-1.5 rounded-md hover:bg-app-10 disabled:opacity-40 text-app"
       aria-label="Previous Page"
       disabled={page === 1}
       onClick={() => setPage(page - 1)}
@@ -22,8 +22,8 @@ const OrdersTablePagination: React.FC<Props> = ({ page, totalPages, setPage }) =
       <button
         key={num}
         onClick={() => setPage(num)}
-        className={`px-3 py-1.5 text-sm rounded-md ${
-          page === num ? "bg-gray-900 text-white" : "hover:bg-gray-100 text-gray-700"
+        className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+          page === num ? "bg-app text-background-app" : "hover:bg-app-10 text-app"
         }`}
       >
         {num}
@@ -31,7 +31,7 @@ const OrdersTablePagination: React.FC<Props> = ({ page, totalPages, setPage }) =
     ))}
 
     <button
-      className="p-1.5 rounded-md hover:bg-gray-100 disabled:opacity-40"
+      className="p-1.5 rounded-md hover:bg-app-10 disabled:opacity-40 text-app"
       aria-label="Next Page"
       disabled={page === totalPages}
       onClick={() => setPage(page + 1)}

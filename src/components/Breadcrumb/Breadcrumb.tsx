@@ -24,7 +24,7 @@ const Breadcrumb: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center space-x-2 text-sm text-gray-500">      
+    <div className="flex items-center space-x-2 text-sm text-app-40">      
       {pathnames.length > 0 && (
         <>
           {pathnames.map((pathname, index) => {
@@ -35,16 +35,16 @@ const Breadcrumb: React.FC = () => {
             return (
               <div key={pathname} className="flex items-center space-x-2">
                 {isLast ? (
-                  <span className="text-[#1c1c1c]">{displayName}</span>
+                  <span className="text-app">{displayName}</span>
                 ) : (
                   <Link 
                     to={routeTo}
-                    className="hover:text-[#1c1c1c] text-[#1c1c1c66] transition-colors"
+                    className="hover:text-app text-app-40 transition-colors"
                   >
                     {displayName}
                   </Link>
                 )}
-                {!isLast && <div>/</div>}
+                {!isLast && <div className="text-app-40">/</div>}
               </div>
             );
           })}

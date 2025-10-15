@@ -10,10 +10,10 @@ const mockProducts = [
 
 const TopSellingProducts: React.FC = () => {
   return (
-    <div className="rounded-2xl bg-[#F7F9FB] p-6">
-      <h3 className="text-sm mb-1">Top Selling Products</h3>
-      <table className="w-full text-xs">
-        <thead className="border-b border-[#1c1c1c33] text-[#1c1c1c66]!">
+    <div className="rounded-2xl bg-background-card p-6 w-full min-w-0 overflow-x-auto">
+      <h6 className="mb-1 text-app">Top Selling Products</h6>
+      <table className="w-full text-xs text-app">
+        <thead className="border-b border-app-20 text-app-40!">
           <tr>
             <th className="text-left py-2 px-3 font-normal!">Name</th>
             <th className="text-left py-2 px-3 font-normal!">Price</th>

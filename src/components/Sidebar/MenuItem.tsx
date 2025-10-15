@@ -40,28 +40,28 @@ function MenuItem({ item, level }: MenuItemProps) {
   return (
     <div key={item.id} className="mb-1">
       <div
-        className={`flex items-center justify-between ${level !== 0 ? 'text-[#1c1c1c]' : 'text-[#1c1c1c66]'} py-1 px-3 rounded-lg cursor-pointer transition-colors ${
+        className={`flex items-center justify-between ${level !== 0 ? 'text-app' : 'text-app-40'} py-1 px-3 rounded-lg cursor-pointer transition-colors ${
           isActive
-            ? "bg-[#1c1c1c0D]" :
-            level !==0 ? "hover:bg-gray-100 hover:text-gray-900" : ''
+            ? "bg-app-5" :
+            level !==0 ? "hover:bg-app-10" : ''
         }`}
         onClick={handleClick}
-        style={{ paddingLeft: `${12 + level * 20}px` }}
+        style={{ paddingLeft: `${12 + (level - 1) * 20}px` }}
       >
         <div className="flex items-center space-x-1">
           {item.id === "favorites" ? (
             <div className="flex justify-between gap-6">
               <span
-                className={`text-sm text-[#1c1c1c33] ${
-                  selectedToggle === "Favorites" ? "text-[#1c1c1c66]" : ""
+                className={`text-xs 2xl:text-sm text-app-20 ${
+                  selectedToggle === "Favorites" ? "text-app-40" : ""
                 }`}
                 onClick={() => setSelectedToggle("Favorites")}
               >
                 Favorites
               </span>
               <span
-                className={`text-sm text-[#1c1c1c33] ${
-                  selectedToggle === "Recently" ? "text-[#1c1c1c66]" : ""
+                className={`text-xs 2xl:text-sm text-app-20 ${
+                  selectedToggle === "Recently" ? "text-app-40" : ""
                 }`}
                 onClick={() => setSelectedToggle("Recently")}
               >
@@ -71,11 +71,11 @@ function MenuItem({ item, level }: MenuItemProps) {
           ) : (
             <>
               {hasChildren && level !==0 && (
-                <span className="text-gray-400">
+                <span className="text-app-40">
                   {(isExpanded && level !== 0) ? (
-                    <ChevronDown className="w-4 h-4 text-[#1c1c1c33]" />
+                    <ChevronDown className="w-4 h-4 text-app-20" />
                   ) : (
-                    <ChevronRight className="w-4 h-4 text-[#1c1c1c33]" />
+                    <ChevronRight className="w-4 h-4 text-app-20" />
                   )}
                 </span>
               )}
@@ -84,7 +84,7 @@ function MenuItem({ item, level }: MenuItemProps) {
                   {item.icon}
                 </span>
               )}
-              <span className="text-sm">{item.label}</span>
+              <span className="text-xs 2xl:text-sm">{item.label}</span>
             </>
           )}
         </div>

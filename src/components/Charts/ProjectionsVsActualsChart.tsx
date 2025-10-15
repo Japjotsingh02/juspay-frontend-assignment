@@ -53,7 +53,13 @@ const ProjectionsVsActualsChart: React.FC<ProjectionsVsActualsProps> = ({
 
   return (
     <BaseChart title="Projections vs Actuals">
-      <ReactECharts option={option} style={{ height: 204, width: "100%" }} />
+      <ReactECharts 
+        option={option} 
+        style={{ height: 204, width: "100%" }} 
+        opts={{ renderer: "svg" }}
+        notMerge={true}
+        lazyUpdate={true}
+      />
     </BaseChart>
   );
 };

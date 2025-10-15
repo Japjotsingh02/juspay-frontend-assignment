@@ -32,7 +32,7 @@ const KPICard: React.FC<KPICardProps> = ({
 
   return (
     <div
-      className={`rounded-2xl flex flex-col gap-2 p-6 text-[#1c1c1c] animate-fadeInUp hover:shadow-md transition-shadow duration-200 ${
+      className={`rounded-2xl flex flex-col gap-2 p-6 text-app animate-fadeInUp hover:shadow-md transition-shadow duration-200 ${
         onClick ? 'cursor-pointer hover:scale-105' : ''
       }`}
       style={{ backgroundColor: bgColor }}

@@ -6,15 +6,29 @@ import type {
   MenuItem,
   NotificationType,
 } from "../types/dashboard.type";
-// import DefaultIcon from "../assets/default-icon.svg?react";
-// import EcommereIcon from "../assets/ecommerce-icon.svg?react";
-// import ProjectsIcon from "../assets/ecommerce-icon.svg?react";
-// import OnlineCoursesIcon from "../assets/online-courses-icon.svg?react";
-// import AccountIcon from "../assets/account-icon.svg?react";
-// import UserProfileIcon from "../assets/user-profile-icon.svg?react";
-// import CorporateIcon from "../assets/corporate-icon.svg?react";
-// import BlogIcon from "../assets/blog-icon.svg?react";
-// import SocialIcon from "../assets/social-icon.svg?react";
+// Light theme icons
+import DefaultIconLight from "../assets/light/default-icon.svg?react";
+import EcommereIconLight from "../assets/light/ecommerce-icon.svg?react";
+import ProjectsIconLight from "../assets/light/ecommerce-icon.svg?react";
+import OnlineCoursesIconLight from "../assets/light/online-courses-icon.svg?react";
+import AccountIconLight from "../assets/light/account-icon.svg?react";
+import UserProfileIconLight from "../assets/light/user-profile-icon.svg?react";
+import CorporateIconLight from "../assets/light/corporate-icon.svg?react";
+import BlogIconLight from "../assets/light/blog-icon.svg?react";
+import SocialIconLight from "../assets/light/social-icon.svg?react";
+
+// Dark theme icons
+import DefaultIconDark from "../assets/dark/default-icon.svg?react";
+import EcommereIconDark from "../assets/dark/ecommerce-icon.svg?react";
+import ProjectsIconDark from "../assets/dark/ecommerce-icon.svg?react";
+import OnlineCoursesIconDark from "../assets/dark/online-courses-icon.svg?react";
+import AccountIconDark from "../assets/dark/account-icon.svg?react";
+import UserProfileIconDark from "../assets/dark/user-profile-icon.svg?react";
+import CorporateIconDark from "../assets/dark/corporate-icon.svg?react";
+import BlogIconDark from "../assets/dark/blog-icon.svg?react";
+import SocialIconDark from "../assets/dark/social-icon.svg?react";
+
+// Other icons without theme variants
 import Contact1Icon from "../assets/contact1-image.svg?react";
 import Contact2Icon from "../assets/contact2-image.svg?react";
 import Contact3Icon from "../assets/contact3-image.svg?react";
@@ -27,161 +41,173 @@ import User3Icon from "../assets/user3-image.svg?react";
 import User4Icon from "../assets/user4-image.svg?react";
 import User5Icon from "../assets/user5-image.svg?react";
 
-export const menuItems: MenuItem[] = [
-  {
-    id: "favorites",
-    label: "Favorites",
-    children: [
-      {
-        id: "overview",
-        label: "Overview",
-        // path: "/favorites/overview",
-      },
-      {
-        id: "projects",
-        label: "Projects",
-        // path: "/favorites/projects",
-      },
-    ],
-  },
-  {
-    id: "dashboards",
-    label: "Dashboards",
-    children: [
-      {
-        id: "default",
-        label: "Default",
-        // icon: <DefaultIcon className="w-4 h-4" />,
-        path: "/dashboards/default",
-      },
-      {
-        id: "ecommerce",
-        label: "eCommerce",
-        // icon: <EcommereIcon className="w-4 h-4" />,
-        // path: "/dashboards/ecommerce",
-        children: [
-          {
-            id: "sub-menu-1-ecommerce",
-            label: "Sub Menu",
-          },
-        ],
-      },
-      {
-        id: "projects-dash",
-        label: "Projects",
-        // icon: <ProjectsIcon className="w-4 h-4" />,
-        // path: "/dashboards/projects",
-        children: [
-          {
-            id: "sub-menu-1-projects",
-            label: "Sub Menu",
-          },
-        ],
-      },
-      {
-        id: "courses",
-        label: "Online Courses",
-        // icon: <OnlineCoursesIcon className="w-4 h-4" />,
-        // path: "/dashboards/courses",
-        children: [
-          {
-            id: "sub-menu-1-courses",
-            label: "Sub Menu",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "pages",
-    label: "Pages",
-    children: [
-      {
-        id: "user-profile",
-        label: "User Profile",
-        // icon: <UserProfileIcon className="w-4 h-4" />,
-        children: [
-          {
-            id: "profile-overview",
-            label: "Overview",
-            // path: "/pages/user-profile/overview",
-          },
-          {
-            id: "profile-projects",
-            label: "Projects",
-            // path: "/pages/user-profile/projects",
-          },
-          {
-            id: "campaigns",
-            label: "Campaigns",
-            // path: "/pages/user-profile/campaigns",
-          },
-          {
-            id: "documents",
-            label: "Documents",
-            // path: "/pages/user-profile/documents",
-          },
-          {
-            id: "followers",
-            label: "Followers",
-            // path: "/pages/followers",
-          },
-        ],
-      },
-      {
-        id: "account",
-        label: "Account",
-        // icon: <AccountIcon className="w-4 h-4" />,
-        children: [
-          {
-            id: "sub-menu-1-account",
-            label: "Sub Menu",
-          },
-        ],
-      },
-      {
-        id: "corporate",
-        label: "Corporate",
-        // icon: <CorporateIcon className="w-4 h-4" />,
-        children: [
-          {
-            id: "sub-menu-1-corporate",
-            label: "Sub Menu",
-          },
-        ],
-      },
-      {
-        id: "blog",
-        label: "Blog",
-        // icon: <BlogIcon className="w-4 h-4" />,
-        children: [
-          {
-            id: "sub-menu-1-blog",
-            label: "Sub Menu",
-          },
-        ],
-      },
-      {
-        id: "social",
-        label: "Social",
-        // icon: <SocialIcon className="w-4 h-4" />,
-        children: [
-          {
-            id: "sub-menu-1-social",
-            label: "Sub Menu",
-          },
-        ],
-      },
-    ],
-  },
-];
+export const getMenuItems = (theme: "light" | "dark"): MenuItem[] => {
+  const DefaultIcon = theme === "light" ? DefaultIconLight : DefaultIconDark;
+  const EcommereIcon = theme === "light" ? EcommereIconLight : EcommereIconDark;
+  const ProjectsIcon = theme === "light" ? ProjectsIconLight : ProjectsIconDark;
+  const OnlineCoursesIcon = theme === "light" ? OnlineCoursesIconLight : OnlineCoursesIconDark;
+  const UserProfileIcon = theme === "light" ? UserProfileIconLight : UserProfileIconDark;
+  const AccountIcon = theme === "light" ? AccountIconLight : AccountIconDark;
+  const CorporateIcon = theme === "light" ? CorporateIconLight : CorporateIconDark;
+  const BlogIcon = theme === "light" ? BlogIconLight : BlogIconDark;
+  const SocialIcon = theme === "light" ? SocialIconLight : SocialIconDark;
+
+  return [
+    {
+      id: "favorites",
+      label: "Favorites",
+      children: [
+        {
+          id: "overview",
+          label: "Overview",
+          // path: "/favorites/overview",
+        },
+        {
+          id: "projects",
+          label: "Projects",
+          // path: "/favorites/projects",
+        },
+      ],
+    },
+    {
+      id: "dashboards",
+      label: "Dashboards",
+      children: [
+        {
+          id: "default",
+          label: "Default",
+          icon: <DefaultIcon className="w-4 h-4" />,
+          path: "/dashboards/default",
+        },
+        {
+          id: "ecommerce",
+          label: "eCommerce",
+          icon: <EcommereIcon className="w-4 h-4" />,
+          // path: "/dashboards/ecommerce",
+          children: [
+            {
+              id: "sub-menu-1-ecommerce",
+              label: "Sub Menu",
+            },
+          ],
+        },
+        {
+          id: "projects-dash",
+          label: "Projects",
+          icon: <ProjectsIcon className="w-4 h-4" />,
+          // path: "/dashboards/projects",
+          children: [
+            {
+              id: "sub-menu-1-projects",
+              label: "Sub Menu",
+            },
+          ],
+        },
+        {
+          id: "courses",
+          label: "Online Courses",
+          icon: <OnlineCoursesIcon className="w-4 h-4" />,
+          // path: "/dashboards/courses",
+          children: [
+            {
+              id: "sub-menu-1-courses",
+              label: "Sub Menu",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "pages",
+      label: "Pages",
+      children: [
+        {
+          id: "user-profile",
+          label: "User Profile",
+          icon: <UserProfileIcon className="w-4 h-4" />,
+          children: [
+            {
+              id: "profile-overview",
+              label: "Overview",
+              // path: "/pages/user-profile/overview",
+            },
+            {
+              id: "profile-projects",
+              label: "Projects",
+              // path: "/pages/user-profile/projects",
+            },
+            {
+              id: "campaigns",
+              label: "Campaigns",
+              // path: "/pages/user-profile/campaigns",
+            },
+            {
+              id: "documents",
+              label: "Documents",
+              // path: "/pages/user-profile/documents",
+            },
+            {
+              id: "followers",
+              label: "Followers",
+              // path: "/pages/followers",
+            },
+          ],
+        },
+        {
+          id: "account",
+          label: "Account",
+          icon: <AccountIcon className="w-4 h-4" />,
+          children: [
+            {
+              id: "sub-menu-1-account",
+              label: "Sub Menu",
+            },
+          ],
+        },
+        {
+          id: "corporate",
+          label: "Corporate",
+          icon: <CorporateIcon className="w-4 h-4" />,
+          children: [
+            {
+              id: "sub-menu-1-corporate",
+              label: "Sub Menu",
+            },
+          ],
+        },
+        {
+          id: "blog",
+          label: "Blog",
+          icon: <BlogIcon className="w-4 h-4" />,
+          children: [
+            {
+              id: "sub-menu-1-blog",
+              label: "Sub Menu",
+            },
+          ],
+        },
+        {
+          id: "social",
+          label: "Social",
+          icon: <SocialIcon className="w-4 h-4" />,
+          children: [
+            {
+              id: "sub-menu-1-social",
+              label: "Sub Menu",
+            },
+          ],
+        },
+      ],
+    },
+  ];
+};
 
 export const statusColor: Record<string, string> = {
   "In Progress": "text-[#8A8CD9]",
   Complete: "text-[#4AA785]",
   Pending: "text-[#59A8D4]",
   Approved: "text-[#FFC555]",
-  Rejected: "text-[#1c1c1c66]",
+  Rejected: "text-app-40",
 };
 
 export const kpiMockData: KPIData = {
@@ -344,11 +370,12 @@ export const mockChartData: ChartData = {
     actuals: [17, 21, 16, 23, 12, 19],
   },
   locations: [
-    { name: "New York", value: 72 },
-    { name: "San Francisco", value: 39 },
-    { name: "Sydney", value: 25 },
-    { name: "Singapore", value: 61 },
+    { name: "New York", value: 72, coords: [-74.006, 40.7128] },
+    { name: "San Francisco", value: 39, coords: [-122.4194, 37.7749] },
+    { name: "Sydney", value: 25, coords: [151.2093, -33.8688] },
+    { name: "Singapore", value: 61, coords: [103.8198, 1.3521] },
   ],
+
 };
 
 export const mockNotifications: NotificationType[] = [
