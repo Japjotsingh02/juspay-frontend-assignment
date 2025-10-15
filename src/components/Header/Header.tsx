@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, onRightMenuClick }) => {
 
             <IconButton
               icon={
-                <RefreshIcon className="w-4 h-4 transition-transform duration-500" />
+                <RefreshIcon className="w-4 h-4 refresh-icon" />
               }
               label="Refresh data"
               onClick={refreshData}

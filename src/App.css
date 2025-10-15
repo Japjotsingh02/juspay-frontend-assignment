@@ -22,6 +22,15 @@
   transition: all 0.2s ease-in-out;
 }
 
+/* Refresh icon rotation on hover */
+.refresh-icon {
+  transition: transform 0.5s ease-in-out;
+}
+
+.refresh-icon:hover {
+  transform: rotate(360deg);
+}
+
 /* Custom animations */
 @keyframes fadeIn {
   from {
