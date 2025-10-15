@@ -5,7 +5,6 @@ A modern, responsive, and feature-rich eCommerce dashboard built with React, Typ
 ![Dashboard Preview](https://img.shields.io/badge/React-19.1.1-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.14-38B2AC)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ## ✨ Features
 
@@ -248,25 +247,10 @@ The dashboard is fully responsive with breakpoints:
 - ✅ Keyboard navigation support
 - ✅ Screen reader friendly
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- GitHub: [JapjotSIngh02](https://github.com/Japjotsingh02)
 
 ## 🙏 Acknowledgments
 
