@@ -1,19 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "react-jsx",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"]
-  },
-  "include": ["src"],
-  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/__tests__/**", "jest.setup.ts"]
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
